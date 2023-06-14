@@ -22,7 +22,7 @@ BONUS=	ft_lstnew_bonus.c   ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 BONUSBINARIES=$(patsubst %.c, $(OUTPUTFOLDER)%.o, $(BONUS))
 
 GNLFILES=GNL/get_next_line_bonus.c GNL/get_next_line_utils_bonus.c
-GNLBIN= $(patsubst %.c, $(OUTPUTFOLDER)%.o, $(GNL))
+GNLBIN= $(patsubst %.c, $(OUTPUTFOLDER)%.o, $(GNLFILES))
 
 PRINTF= ft_hexadecimal.c ft_integer.c      ft_parse_bonus.c ft_pointer.c \
 		ft_print_utils.c ft_printf_bonus.c ft_string.c      ft_ultoa.c
