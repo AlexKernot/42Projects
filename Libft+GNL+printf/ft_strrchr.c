@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akernot <akernot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 21:20:06 by akernot           #+#    #+#             */
-/*   Updated: 2023/05/04 21:20:06 by akernot          ###   ########.fr       */
+/*   Updated: 2023/06/15 18:59:40 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <string.h>
-
-int	ft_strlen(char *string);
 
 char	*ft_strrchr(const char *s, int c)
 {
