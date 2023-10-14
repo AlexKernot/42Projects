@@ -15,18 +15,14 @@ Fixed::Fixed(const Fixed& copy) {
 }
 
 Fixed::Fixed(const int num) {
+	std::cout << "Int constructor called" << std::endl;
 	number = num;
 	number = number << fractionalPoint;
 }
 
 Fixed::Fixed(const float num) {
-	number = static_cast<int>(floor(num));
-	number = number << fractionalPoint;
-
-	float decimal = num - floor(num);
-	decimal = pow(2, fractionalPoint);
-	decimal = round(decimal);
-	number |= decimal;
+	std::cout << "Float constructor called" << std::endl;
+	number = roundf(num * 256);
 }
 
 Fixed& Fixed::operator=(const Fixed& copy) {
@@ -50,12 +46,9 @@ void Fixed::setRawBits(int const raw) {
 }
 
 float Fixed::toFloat() const {
-	float integerPart = number >> fractionalPoint;
-	float decimalPart = 0;
-	for (int i = 0; i < fractionalPoint; ++i) {
-		decimalPart += 1 * std::pow(2, -i);
-	}
-	return integerPart + decimalPart;
+	float retVal = number;
+	retVal /= 256;
+	return retVal;
 }
 
 int Fixed::toInt() const {

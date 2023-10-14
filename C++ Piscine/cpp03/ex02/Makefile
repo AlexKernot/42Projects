@@ -1,5 +1,5 @@
 NAME=a.out
-FILES=Fixed.cpp main.cpp
+FILES=ClapTrap.cpp main.cpp ScavTrap.cpp FragTrap.cpp
 BIN=$(FILES:%.cpp=%.o)
 
 CPP=c++
@@ -18,5 +18,7 @@ clean:
 	rm -f $(BIN)
 fclean: clean
 	rm -f $(NAME) output
+
+re: fclean $(NAME)
 
 .PHONEY: all clean $(NAME)

@@ -2,8 +2,8 @@ NAME=a.out
 FILES=Fixed.cpp main.cpp
 BIN=$(FILES:%.cpp=%.o)
 
-CPP=g++
-CPPFLAGS=-Wall -Wextra -Wpedantic -g -std=c++98
+CPP=c++
+CPPFLAGS=-Wall -Wextra -Wpedantic -Werror -Wshadow -g -std=c++98
 LDFLAGS=-fsanitize=address -fsanitize=undefined
 
 %.o : %.cpp

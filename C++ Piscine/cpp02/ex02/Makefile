@@ -1,5 +1,5 @@
 NAME=a.out
-FILES=Fixed.cpp main.cpp
+FILES=Fixed.cpp main.cpp divideByZeroException.cpp
 BIN=$(FILES:%.cpp=%.o)
 
 CPP=c++
@@ -18,5 +18,7 @@ clean:
 	rm -f $(BIN)
 fclean: clean
 	rm -f $(NAME) output
+
+re: fclean $(NAME)
 
 .PHONEY: all clean $(NAME)

@@ -1,6 +1,8 @@
 #ifndef FIXED_HPP
 # define FIXED_HPP
 
+# include <ostream>
+
 class Fixed {
 private:
 	static const int fractionalPoint = 8;
@@ -17,5 +19,7 @@ public:
 	float toFloat() const;
 	int toInt() const;
 };
+
+std::ostream& operator<< (std::ostream &out, const Fixed& num);
 
 #endif //FIXED_HPP
