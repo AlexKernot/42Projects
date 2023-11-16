@@ -1,70 +1,54 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_ltoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 13:28:37 by akernot           #+#    #+#             */
-/*   Updated: 2023/06/15 18:03:53 by akernot          ###   ########.fr       */
+/*   Created: 2023/10/26 14:36:22 by akernot           #+#    #+#             */
+/*   Updated: 2023/10/26 17:23:06 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include <stdlib.h>
+#include <stdint.h>
+
 #include "libft.h"
 
-static int	count_digits(long n)
-{
-	int	i;
+/* 123456789 */
+/* 12345678 */
+/* 1234567 */
+/* 123456 */
+/* ... */
+/* 1 */
 
-	i = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-	{
-		i++;
-		n = -n;
-	}
-	while (n)
-	{
-		i++;
-		n /= 10;
-	}
-	return (i);
-}
-
-void	convert(long number, char **str, int pos)
+void	convert(unsigned long number, char **str, const int pos)
 {
-	if (number < 0)
-	{
-		str[0][0] = '-';
-		number = -number;
-	}
 	if (number >= 10)
 		convert(number / 10, str, pos - 1);
-	str[0][pos] = (number % 10) + '0';
+	(*str)[sizeof(number) - pos] = (number % 10) + '0';
 }
 
-char	*ft_itoa(int n)
+char	*ft_ltoa(const long n)
 {
-	int		length;
-	long	working_number;
-	char	*string;
+	const unsigned int	size = sizeof(n) * 5;
+	unsigned long		working_number;
+	char				*string;
 
-	length = count_digits((long)n);
-	string = (char *)ft_calloc(length + 1, sizeof(char));
-	if (!string)
+	string = (char *)ft_calloc(size + 1, sizeof(char));
+	if (string == NULL)
 		return (NULL);
 	if (n == 0)
 	{
 		string[0] = '0';
-		string[1] = '\0';
 		return (string);
 	}
-	working_number = (long)n;
-	convert(working_number, &string, length - 1);
-	string[length] = 0;
+	working_number = (unsigned long)n;
+	if (n < 0)
+	{
+		string[0] = '-';
+		working_number = -n;
+	}
+	convert(working_number, &string, sizeof(n));
 	return (string);
 }
 /*

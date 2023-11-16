@@ -52,4 +52,4 @@ bonus: $(NAME) $(BONUSBINARIES)
 	@echo "libft Finished."
 re: fclean all
 
-.PHONY: clean all $(NAME) fclean bonus re
+.PHONY: clean all fclean bonus re

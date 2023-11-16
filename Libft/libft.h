@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akernot <akernot@student.42.ft>            +#+  +:+       +#+        */
+/*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:24:21 by akernot           #+#    #+#             */
-/*   Updated: 2023/06/14 22:46:22 by akernot          ###   ########.fr       */
+/*   Updated: 2023/10/26 17:54:40 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define LIBFT_H
 
 # include <string.h>
+
+typedef enum e_bool {
+	error = -1,
+	false = 0,
+	true = 1
+}	t_bool;
 
 int		ft_isalpha(char c);
 int		ft_isdigit(char c);
@@ -45,10 +51,6 @@ char	**ft_split(const char *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putendl_fd(char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
 typedef struct s_list
 {
 	void			*content;
@@ -63,6 +65,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-int		ft_printf(const char *format, ...);
 char	*get_next_line(int fd);
 #endif

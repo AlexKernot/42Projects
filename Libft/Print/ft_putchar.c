@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/23 14:46:13 by akernot           #+#    #+#             */
-/*   Updated: 2023/06/15 18:04:33 by akernot          ###   ########.fr       */
+/*   Created: 2023/10/26 17:55:39 by akernot           #+#    #+#             */
+/*   Updated: 2023/10/26 17:58:28 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "print.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+#include <unistd.h>
+
+t_bool	ft_putchar(const char c)
 {
-	unsigned char	to_find;
-	unsigned char	*array;
-	void			*found;
-	size_t			i;
-
-	i = 0;
-	to_find = (unsigned char)c;
-	array = (unsigned char *)s;
-	while (i < n)
-	{
-		if (array[i] == to_find)
-		{
-			found = (void *)&array[i];
-			return (found);
-		}
-		i++;
-	}
-	return (NULL);
+	return (write(1, &c, 1));
 }

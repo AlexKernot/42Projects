@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akernot <akernot@student.42.fr>            +#+  +:+       +#+        */
+/*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:14:56 by akernot           #+#    #+#             */
-/*   Updated: 2023/04/24 16:30:58 by akernot          ###   ########.fr       */
+/*   Updated: 2023/10/26 14:26:32 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	check_newline(char *string)
 	return (0);
 }
 
-void	*ft_calloc(int nmemb, int size)
+void	*gnl_calloc(int nmemb, int size)
 {
 	char	*ptr;
 	int		i;
@@ -49,7 +49,7 @@ void	*ft_calloc(int nmemb, int size)
 	return ((void *)ptr);
 }
 
-int	ft_linelen(const char *s)
+int	gnl_linelen(const char *s)
 {
 	int	i;
 
@@ -63,7 +63,7 @@ int	ft_linelen(const char *s)
 	return (i);
 }
 
-void	*ft_memcpy(void *dest, const void *src, int n)
+void	*gnl_memcpy(void *dest, const void *src, int n)
 {
 	char			*int_dest;
 	const char		*int_src;
@@ -83,7 +83,7 @@ void	*ft_memcpy(void *dest, const void *src, int n)
 }
 
 /* Normal strjoin except it will stop at the first \n found */
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*gnl_strjoin(char const *s1, char const *s2)
 {
 	char	*new_string;
 	int		size1;
@@ -91,14 +91,14 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	size1 = ft_linelen((char *)s1);
-	size2 = ft_linelen((char *)s2);
-	new_string = (char *)ft_calloc(size1 + size2 + 1, 1);
+	size1 = gnl_linelen((char *)s1);
+	size2 = gnl_linelen((char *)s2);
+	new_string = (char *)gnl_calloc(size1 + size2 + 1, 1);
 	if (!new_string)
 		return (NULL);
-	ft_memcpy(new_string, s1, size1);
+	gnl_memcpy(new_string, s1, size1);
 	if (check_newline(new_string))
 		return (new_string);
-	ft_memcpy(&new_string[size1], s2, size2);
+	gnl_memcpy(&new_string[size1], s2, size2);
 	return (new_string);
 }

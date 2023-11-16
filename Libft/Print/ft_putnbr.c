@@ -1,22 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 20:46:29 by akernot           #+#    #+#             */
-/*   Updated: 2023/06/15 18:04:55 by akernot          ###   ########.fr       */
+/*   Created: 2023/10/26 17:59:03 by akernot           #+#    #+#             */
+/*   Updated: 2023/10/26 18:25:22 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "print.h"
+
 #include "libft.h"
 
-void	ft_putendl_fd(char *s, int fd)
+static t_bool	int_to_char(long number, char **str, int pos)
 {
-	if (s == 0)
-		return ;
-	ft_putstr_fd(s, fd);
-	ft_putchar_fd('\n', fd);
+	if (number < 0)
+	{
+		str[0][0] = '-';
+		number = -number;
+		pos++;
+	}
+	if (number >= 10)
+		int_to_char(number / 10, str, pos - 1);
+	ft_putchar((number) % 10 + '0')
+	str[0][pos] = (number % 10) + '0';
+}
+
+t_bool	ft_putnbr_fd(int n, int fd)
+{
+	
+	return ;
 }
