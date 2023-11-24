@@ -1,9 +1,12 @@
 #ifndef CAT_HPP
 # define CAT_HPP
 
-# include "Animal.hpp"
+# include "A_Animal.hpp"
+# include "Brain.hpp"
 
-class Cat : public Animal {
+class Cat : public A_Animal {
+private:
+	Brain* brain;
 public:
 	Cat();
 	Cat(const Cat&);

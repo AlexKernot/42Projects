@@ -1,5 +1,5 @@
 NAME=a.out
-FILES=main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
+FILES=main.cpp A_Animal.cpp Cat.cpp Dog.cpp Brain.cpp
 BIN=$(FILES:%.cpp=%.o)
 
 CPP=c++

@@ -1,6 +1,7 @@
 #include "Cat.hpp"
 
 Cat::Cat() : Animal("Cat") {
+	brain = new Brain();
 	std::cout << "Cat default constructor called" << std::endl;
 }
 
@@ -16,6 +17,7 @@ Cat& Cat::operator=(const Cat& copy) {
 }
 
 Cat::~Cat() {
+	delete brain;
 	std::cout << "Cat has been destructed" << std::endl;
 }
 

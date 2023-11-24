@@ -1,10 +1,11 @@
 #include "Dog.hpp"
 
-Dog::Dog() : Animal("Dog") {
+Dog::Dog() : A_Animal("Dog") {
+	brain = new Brain();
 	std::cout << "Dog constructed" << std::endl;
 }
 
-Dog::Dog(const Dog& copy) : Animal("Dog") {
+Dog::Dog(const Dog& copy) : A_Animal("Dog") {
 	std::cout << "Dog copy constructor called" << std::endl;
 	*this = copy;
 }
@@ -17,6 +18,7 @@ Dog& Dog::operator=(const Dog& copy) {
 }
 
 Dog::~Dog() {
+	delete brain;
 	std::cout << "Dog destructed :(" << std::endl;
 }
 
