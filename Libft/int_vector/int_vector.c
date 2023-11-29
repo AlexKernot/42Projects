@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vector.c                                        :+:      :+:    :+:   */
+/*   int_vector.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/16 18:24:45 by akernot           #+#    #+#             */
-/*   Updated: 2023/11/18 18:32:37 by akernot          ###   ########.fr       */
+/*   Updated: 2023/11/18 18:36:11 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../vector.h"
+#include "../int_vector.h"
 
 #include <stdlib.h>
 #include <unistd.h>
 
-t_vector	*vector_ctor(int capacity)
+t_int_vector	*int_vector_ctor(int capacity)
 {
-	t_vector		*new;
+	t_int_vector	*new;
 	void			**array;
 	int				i;
 
-	new = (t_vector *)malloc(sizeof(t_vector));
+	new = (t_int_vector *)malloc(sizeof(t_int_vector));
 	array = malloc(sizeof(*(new->array)) * capacity);
 	new->array = array;
 	new->size = 0;
@@ -29,12 +29,12 @@ t_vector	*vector_ctor(int capacity)
 	i = 0;
 	while (i < capacity)
 	{
-		array[i] = NULL;
+		array[i] = 0;
 	}
 	return (new);
 }
 
-void	vector_dtor(t_vector **vector)
+void	int_vector_dtor(t_int_vector **vector)
 {
 	int	i;
 
@@ -42,24 +42,15 @@ void	vector_dtor(t_vector **vector)
 		return ;
 	if ((*vector)->array == 0)
 		return ;
-	i = 0;
-	while (i < (*vector)->size)
-	{
-		if ((*vector)->array[i] != NULL)
-		{
-			free ((*vector)->array[i]);
-			(*vector)->array[i] == NULL;
-		}
-	}
 	free((*vector)->array);
 	free(*vector);
 	*vector = NULL;
 }
 
-void	vector_resize(t_vector *vector, int size)
+void	int_vector_resize(t_int_vector *vector, int size)
 {
-	void		**new_array;
-	int			i;
+	int	*new_array;
+	int	i;
 
 	new_array = malloc(sizeof(*(vector->array)) * size);
 	i = 0;
@@ -75,7 +66,7 @@ void	vector_resize(t_vector *vector, int size)
 	vector->array = new_array;
 }
 
-void	vector_push_back(t_vector *vector, void *data)
+void	int_vector_push_back(t_int_vector *vector, void *data)
 {
 	if (vector->size + 1 == vector->capacity)
 	{
@@ -90,7 +81,7 @@ void	vector_push_back(t_vector *vector, void *data)
 	vector->size += 1;
 }
 
-void	vector_pop_back(t_vector *vector)
+void	int_vector_pop_back(t_int_vector *vector)
 {
 	const int	index = vector->size - 1;
 	void		*data;

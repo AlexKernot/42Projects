@@ -10,14 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "../stack.h"
 #include "libft.h"
 #include <stdlib.h>
 
-/* Creates a new vector and suspends the stack in the middle of it.           */
-/* The stack is padded on both sides for this project only. It provides a way */
-/* to rotate the stack stack_size/2 rotations before needing to shift the     */
-/* stack. This padding will be removed for a normal stack.                    */
 t_stack	*stack_ctor(int stack_size)
 {
 	t_stack	*new_stack;
@@ -25,7 +21,7 @@ t_stack	*stack_ctor(int stack_size)
 	new_stack = (t_stack *)malloc(sizeof(t_stack));
 	if (new_stack == NULL)
 		return (NULL);
-	new_stack->data = vector_ctor(stack_size);
+	new_stack->data = int_vector_ctor(stack_size);
 	return (new_stack);
 }
 
@@ -40,44 +36,56 @@ void	stack_dtor(t_stack **this_stack)
 	if (stack == NULL)
 		return ;
 	if (stack->data != NULL)
-		vector_dtor(&stack->data);
+		int_vector_dtor(&stack->data);
 	free(*this_stack);
 	*this_stack = NULL;
 }
 
-void	stack_push(t_stack *this_stack, int number)
+void	stack_push(t_stack *this_stack, const int number)
 {
-	t_packet	*data;
+	t_int_vector	*data;
+	int				*new;
 
 	if (this_stack == NULL || this_stack->data == NULL
 		|| this_stack->data->array == NULL)
 		return ;
-	if (this_stack->stack_head + 1 >= this_stack->data->capacity)
-		vector_resize(&this_stack->data, this_stack->data->capacity * 2);
-	data = this_stack->data->array;
-	data[this_stack->stack_head + 1].number = number;
-	++(this_stack->data->size);
-	++(this_stack->stack_head);
-	data->flag = 1;
-	data->cost = 0;
+	data = this_stack->data;
+	int_vector_push_back(data, number);
 }
 
-int	stack_pop(t_stack *this_stack)
+t_optional	stack_pop(t_stack *this_stack)
 {
-	int			number;
-	t_packet	*data;
+	t_optional		retval;
+	t_int_vector	*vector;
+	int				vector_size;
+	t_optional		data;
 
-	if (this_stack == NULL || this_stack->data == NULL
-		|| this_stack->data->array == NULL)
-		return (0);
-	if (this_stack->stack_head == 0)
-		return (0);
-	data = this_stack->data->array;
-	number = data[this_stack->stack_head].number;
-	data[this_stack->stack_head].number = 0;
-	data->flag = 0;
-	data->cost = 0;
-	--(this_stack->stack_head);
-	--(this_stack->data->size);
-	return (number);
+	retval.exists = false;
+	if (this_stack == NULL || vector == NULL
+		|| vector->array == NULL)
+		return (retval);
+	if (vector_size == 0)
+		return (retval);
+	vector = this_stack->data;
+	vector_size = vector->size;
+	data = int_vector_end(vector);
+	(vector->size)--;
+	return (data);
+}
+
+t_optional	stack_front(t_stack *this_stack)
+{
+	t_optional		retval;
+	t_int_vector	*vector;
+	int				index;
+
+	retval.exists = false;
+	if (this_stack == NULL)
+		return (retval);
+	if (this_stack->data == NULL)
+		return (retval);
+	if (this_stack->data->array == NULL || this_stack->data->size == 0)
+		return (retval);
+	vector = this_stack->data;
+	return (int_vector_front(vector));
 }

@@ -10,11 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../vector.h"
+#include "../int_vector.h"
 
 #include <stdlib.h>
 
-void	vector_set(t_vector *vector, int index, void *data)
+void	int_vector_set(t_int_vector *vector, int index, int data)
 {
 	if (index < 0)
 		return ;
@@ -24,23 +24,35 @@ void	vector_set(t_vector *vector, int index, void *data)
 	vector->array[index] = data;
 }
 
-void	*vector_get(t_vector *vector, int index)
+t_optional	int_vector_get(t_int_vector *vector, int index)
 {
-	if (index > vector->capacity)
-		return (0);
-	if (index < 0)
-		return (0);
-	return (vector->array[index]);
+	t_optional	retval;
+
+	retval.exists = 0;
+	if (vector == NULL)
+		return (retval);
+	if (vector->array == NULL || vector->size < 1)
+		return (retval);
+	if (index >= vector->size)
+		return (retval);
+	retval.value = vector->array[index];
+	retval.exists = 1;
+	return (retval);
 }
 
-void	*vector_front(t_vector *vector)
+t_optional	int_vector_front(t_int_vector *vector)
 {
-	return (vector->array[0]);
+	return (int_vector_get(vector, 0));
 }
 
-void	*vector_end(t_vector *vector)
+t_optional	int_vector_end(t_int_vector *vector)
 {
-	const int	index = vector->size - 1;
+	int			index;
+	t_optional	retval;
 
-	return (vector->array[index]);
+	retval.exists = 0;
+	if (vector == NULL)
+		return (retval);
+	index = vector->size - 1;
+	return (int_vector_get(vector, index));
 }
