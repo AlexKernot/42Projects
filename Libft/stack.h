@@ -6,14 +6,14 @@
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 14:26:56 by akernot           #+#    #+#             */
-/*   Updated: 2023/11/18 18:40:29 by akernot          ###   ########.fr       */
+/*   Updated: 2023/12/02 13:04:24 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
 
-# include "int_vector.h"
+# include "vector.h"
 # include "optional.h"
 
 /* A last in first out data structure that creates a vector of            */

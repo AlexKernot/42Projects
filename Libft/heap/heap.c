@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   heap.cpp                                           :+:      :+:    :+:   */
+/*   heap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/18 17:56:53 by akernot           #+#    #+#             */
-/*   Updated: 2023/11/18 19:00:18 by akernot          ###   ########.fr       */
+/*   Updated: 2023/11/30 17:22:46 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ t_heap	*heap_ctor(int heap_size, int (*sort)(int, int))
 	t_heap *const	new_heap = (t_heap*)malloc(sizeof(new_heap));
 	new_heap->sort = sort;
 	new_heap->data = int_vector_ctor(heap_size);
+	// NOT FINISHED
+	return new_heap;
 }
 
 int	heap_parent(t_heap *this_heap, const int index)
