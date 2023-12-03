@@ -6,7 +6,7 @@
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:59:03 by akernot           #+#    #+#             */
-/*   Updated: 2023/11/30 17:26:26 by akernot          ###   ########.fr       */
+/*   Updated: 2023/12/03 18:00:41 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,36 @@ static t_bool	int_to_char(long number, char **str, int pos)
 	}
 	if (number >= 10)
 		int_to_char(number / 10, str, pos - 1);
-	ft_putchar((number) % 10 + '0');
+	if (ft_putchar((number) % 10 + '0') == false)
+		return (false);
 	str[0][pos] = (number % 10) + '0';
+	return (true);
 }
 
-t_bool	ft_putnbr_fd(int n, int fd)
+t_bool	ft_putnbr(int n)
 {
-	
-	return ;
+	char	*num_point;
+	char	number[12];
+	int		copy;
+	int		length;
+
+	if (n == 0)
+	{
+		return (ft_putchar('0'));
+	}
+	copy = n;
+	length = 0;
+	if (copy < 0)
+		copy = -copy;
+	while (copy)
+	{
+		length++;
+		copy /= 10;
+	}
+	num_point = &number[0];
+	if (int_to_char((long)n, &num_point, length - 1))
+		return (false);
+	if (ft_putstr(num_point))
+		return (false);
+	return (true);
 }

@@ -6,7 +6,7 @@
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/06 21:24:21 by akernot           #+#    #+#             */
-/*   Updated: 2023/10/26 17:54:40 by akernot          ###   ########.fr       */
+/*   Updated: 2023/12/02 13:31:53 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include <string.h>
 
-typedef enum e_bool {
+typedef enum e_bool
+{
 	error = -1,
 	false = 0,
 	true = 1

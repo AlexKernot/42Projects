@@ -21,7 +21,7 @@ t_stack	*stack_ctor(int stack_size)
 	new_stack = (t_stack *)malloc(sizeof(t_stack));
 	if (new_stack == NULL)
 		return (NULL);
-	new_stack->data = int_vector_ctor(stack_size);
+	new_stack->data = vector_ctor(stack_size);
 	return (new_stack);
 }
 
@@ -36,56 +36,51 @@ void	stack_dtor(t_stack **this_stack)
 	if (stack == NULL)
 		return ;
 	if (stack->data != NULL)
-		int_vector_dtor(&stack->data);
+		vector_dtor(&stack->data);
 	free(*this_stack);
 	*this_stack = NULL;
 }
 
-void	stack_push(t_stack *this_stack, const int number)
+void	stack_push(t_stack *this_stack, void *data)
 {
-	t_int_vector	*data;
-	int				*new;
+	t_vector	*vec;
 
 	if (this_stack == NULL || this_stack->data == NULL
 		|| this_stack->data->array == NULL)
 		return ;
-	data = this_stack->data;
-	int_vector_push_back(data, number);
+	vec = this_stack->data;
+	vector_push_back(vec, data);
 }
 
-t_optional	stack_pop(t_stack *this_stack)
+void	*stack_pop(t_stack *this_stack)
 {
-	t_optional		retval;
-	t_int_vector	*vector;
-	int				vector_size;
-	t_optional		data;
+	t_vector	*vector;
+	int			vector_size;
+	void		*data;
 
-	retval.exists = false;
-	if (this_stack == NULL || vector == NULL
-		|| vector->array == NULL)
-		return (retval);
-	if (vector_size == 0)
-		return (retval);
+	if (this_stack == NULL)
+		return (NULL);
 	vector = this_stack->data;
+	if (vector == NULL || vector->array == NULL)
+		return (NULL);
 	vector_size = vector->size;
-	data = int_vector_end(vector);
+	if (vector_size == 0)
+		return (NULL);
+	data = vector_end(vector);
 	(vector->size)--;
 	return (data);
 }
 
-t_optional	stack_front(t_stack *this_stack)
+void	*stack_front(t_stack *this_stack)
 {
-	t_optional		retval;
-	t_int_vector	*vector;
-	int				index;
+	t_vector	*vector;
 
-	retval.exists = false;
 	if (this_stack == NULL)
-		return (retval);
+		return (NULL);
 	if (this_stack->data == NULL)
-		return (retval);
+		return (NULL);
 	if (this_stack->data->array == NULL || this_stack->data->size == 0)
-		return (retval);
+		return (NULL);
 	vector = this_stack->data;
-	return (int_vector_front(vector));
+	return (vector_end(vector));
 }

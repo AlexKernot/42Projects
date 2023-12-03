@@ -6,14 +6,14 @@
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 20:46:29 by akernot           #+#    #+#             */
-/*   Updated: 2023/10/26 17:58:24 by akernot          ###   ########.fr       */
+/*   Updated: 2023/12/03 18:06:18 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "libft.h"
+#include "../print.h"
 
-t_bool	ft_putendl_fd(char *s, int fd)
+t_bool	ft_putendl_fd(const char *s, const int fd)
 {
 	if (s == 0)
 		return (false);
@@ -21,4 +21,5 @@ t_bool	ft_putendl_fd(char *s, int fd)
 		return (false);
 	if (ft_putchar_fd('\n', fd) == false)
 		return (false);
+	return (true);
 }

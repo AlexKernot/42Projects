@@ -6,17 +6,18 @@
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 17:56:31 by akernot           #+#    #+#             */
-/*   Updated: 2023/10/26 17:57:41 by akernot          ###   ########.fr       */
+/*   Updated: 2023/12/03 18:06:40 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include "../print.h"
 #include "libft.h"
 
-t_bool	ft_putendl(char *s)
+t_bool	ft_putendl(const char *s)
 {
 	if (s == NULL)
-		return ;
+		return (false);
 	if (ft_putstr(s) == false)
 		return (false);
 	if (ft_putchar('\n') == false)

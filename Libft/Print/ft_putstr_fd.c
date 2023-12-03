@@ -6,14 +6,14 @@
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 20:46:29 by akernot           #+#    #+#             */
-/*   Updated: 2023/10/26 18:00:21 by akernot          ###   ########.fr       */
+/*   Updated: 2023/12/03 18:07:57 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
-#include "libft.h"
+#include "../print.h"
 
-t_bool	ft_putstr_fd(char *s, int fd)
+t_bool	ft_putstr_fd(const char *s, const int fd)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/17 18:38:25 by akernot           #+#    #+#             */
-/*   Updated: 2023/11/17 19:09:04 by akernot          ###   ########.fr       */
+/*   Updated: 2023/12/03 18:02:36 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,8 @@ void		*vector_get(t_vector *vector, int index);
 
 /* Returns a pointer to the value at the end of the vector.                   */
 void		*vector_end(t_vector *vector);
+
+/* Returns a pointer to the value at the front of the vector. */
+void		*vector_front(t_vector *vector);
 
 #endif

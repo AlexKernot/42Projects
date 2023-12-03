@@ -6,11 +6,11 @@
 /*   By: akernot <akernot@student.42Adel.org.au>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 13:39:23 by akernot           #+#    #+#             */
-/*   Updated: 2023/10/26 18:00:51 by akernot          ###   ########.fr       */
+/*   Updated: 2023/12/03 18:07:46 by akernot          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../print.h"
 
 static void	int_to_char(long number, char **str, int pos)
 {
@@ -27,7 +27,7 @@ static void	int_to_char(long number, char **str, int pos)
 	str[0][pos] = (number % 10) + '0';
 }
 
-void	ft_putnbr_fd(int n, int fd)
+t_bool	ft_putnbr_fd(const int n, const int fd)
 {
 	char	*num_point;
 	char	number[12];
@@ -35,10 +35,7 @@ void	ft_putnbr_fd(int n, int fd)
 	int		length;
 
 	if (n == 0)
-	{
-		ft_putchar_fd('0', fd);
-		return ;
-	}
+		return (ft_putchar_fd('0', fd));
 	copy = n;
 	length = 0;
 	if (copy < 0)
@@ -50,6 +47,5 @@ void	ft_putnbr_fd(int n, int fd)
 	}
 	num_point = &number[0];
 	int_to_char((long)n, &num_point, length - 1);
-	ft_putstr_fd(num_point, fd);
-	return ;
+	return (ft_putstr_fd(num_point, fd));
 }
