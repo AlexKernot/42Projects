@@ -64,8 +64,8 @@ clean:
 	-@rm -fd  $(OUTPUTFOLDER)/int_vector
 	-@rm -fd  $(OUTPUTFOLDER)/list
 	-@rm -fd  $(OUTPUTFOLDER)/Memory
-	-@rm -fd  $(OUTPUTFOLDER)/Print
 	-@rm -fd  $(OUTPUTFOLDER)/Print/Printf
+	-@rm -fd  $(OUTPUTFOLDER)/Print
 	-@rm -fd  $(OUTPUTFOLDER)/stack
 	-@rm -fd  $(OUTPUTFOLDER)/string
 	-@rm -fd  $(OUTPUTFOLDER)/vector
