@@ -27,6 +27,7 @@ public:
 	int	operator++(int);
 
 	void signForm(AForm&);
+	void executeForm(AForm const& form);
 
 	friend std::ostream& operator<<(std::ostream& out, Bureaucrat& bureaucrat);
 

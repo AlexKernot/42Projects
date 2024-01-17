@@ -1,5 +1,5 @@
 NAME=a.out
-FILES=Bureaucrat.cpp main.cpp AForm.cpp
+FILES=Bureaucrat.cpp main.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 BIN=$(FILES:%.cpp=%.o)
 
 CPP=clang++

@@ -27,6 +27,8 @@ public:
 	bool getIsSigned() const;
 
 	void beSigned(Bureaucrat&);	
+	void execute(Bureaucrat const& executor) const;
+	virtual void run() const = 0;
 
 	friend std::ostream& operator<<(std::ostream&, AForm&);
 
@@ -35,6 +37,10 @@ public:
 		virtual const char* what() const throw();
 	};
 	class GradeTooLowException : public std::exception {
+	public:
+		virtual const char* what() const throw();
+	};
+	class FormNotSignedException : public std::exception {
 	public:
 		virtual const char* what() const throw();
 	};
